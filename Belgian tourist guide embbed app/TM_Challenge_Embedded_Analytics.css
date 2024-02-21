@@ -1,0 +1,66 @@
+
+
+body {
+    margin: 0; 
+    padding: 0; 
+    background-image: url('./background_image.png');
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    background-attachment: fixed; 
+}
+
+
+
+div.qvobject,
+div.qvplaceholder {
+    padding: 30px 10px 10px 10px;
+    height: 500px;
+}
+div.qvobjectsm,
+div.qvplaceholdersm {
+    padding: 30px 10px 10px 10px;
+    height: 300px;
+}
+	
+.navbar {
+    background: linear-gradient(to right, rgba(135, 206, 235, 0.7), rgba(255, 20, 147, 0.5));
+}
+
+/* Style for the aside section */
+.sidebar {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    padding-top: 20px;
+    height: 100vh;
+    background-color: rgba(248, 249, 250, 0.4); 
+    font-family: "Helvetica Neue", sans-serif; 
+}
+
+/* Style for the navlist items */
+.nav-link {
+    padding: 5px 15px;
+    font-size: 16px;
+    color: #333; 
+    text-decoration: none; 
+    transition: color 0.3s; 
+}
+
+/* Highlight the active navlist item (optional) */
+.nav-link.active {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.introduction {
+	padding: 40px; 
+	background-color: #f8f9fa;
+	margin-bottom: 30px;
+	border-radius: 15px;
+}
+.card.mb-3 {
+	max-width: 90%; 
+	margin: 0 auto 20px auto; 
+}
+
+

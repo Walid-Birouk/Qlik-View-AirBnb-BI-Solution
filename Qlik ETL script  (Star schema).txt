@@ -1,0 +1,242 @@
+Fact_Listing:
+LOAD Distinct
+    AutoNumber(listing_id) as ListingID,
+     AutoNumber(listing_id) as PropertyID,
+    Autonumber(host_id) as HostID, 
+    Autonumber(neighbourhood_cleansed & 'Antwerp' ) as NeighbourhoodID,
+  	Autonumber("date") as DateID,
+    price,
+    "date",
+    adjusted_price,
+    available,
+    number_of_reviews,
+    review_scores_rating,
+    review_scores_accuracy,
+    review_scores_cleanliness,
+    review_scores_checkin,
+    review_scores_communication,
+    review_scores_location,
+    review_scores_value,
+     minimum_nights ,
+    maximum_nights
+    
+    Resident Antwerp_listings;
+    
+    Concatenate(Fact_Listing)
+    
+    
+    LOAD Distinct
+    AutoNumber(listing_id) as ListingID,
+
+
+     AutoNumber(listing_id) as PropertyID,
+    Autonumber(host_id) as HostID, 
+    Autonumber(neighbourhood_cleansed & 'Brussels' ) as NeighbourhoodID,
+  	Autonumber("date") as DateID,
+    price,
+    "date",
+    adjusted_price,
+    available,
+    number_of_reviews,
+    review_scores_rating,
+    review_scores_accuracy,
+    review_scores_cleanliness,
+    review_scores_checkin,
+    review_scores_communication,
+    review_scores_location,
+    review_scores_value,
+     minimum_nights ,
+    maximum_nights
+    
+    Resident Brussels_listings;
+    
+    Concatenate(Fact_Listing)
+    
+    
+    LOAD Distinct
+    AutoNumber(listing_id) as ListingID,
+
+     AutoNumber(listing_id) as PropertyID,
+    Autonumber(host_id) as HostID, 
+    Autonumber(neighbourhood_cleansed & 'Ghent' ) as NeighbourhoodID,
+  	Autonumber("date") as DateID,
+    price,
+    "date",
+    available,
+    adjusted_price,
+    number_of_reviews,
+    review_scores_rating,
+    review_scores_accuracy,
+    review_scores_cleanliness,
+    review_scores_checkin,
+    review_scores_communication,
+    review_scores_location,
+    review_scores_value,
+     minimum_nights ,
+    maximum_nights
+    
+    Resident Ghent_listings;
+ 
+ 
+
+
+  
+
+Dim_Neighbourhood:
+
+  LOAD Distinct
+	Autonumber(neighbourhood_cleansed & 'Antwerp') as NeighbourhoodID, 
+    neighbourhood_cleansed as neighbourhood_name ,
+    'Antwerp' as city
+    
+  Resident Antwerp_listings;
+  
+  Concatenate(Dim_Neighbourhood)
+   LOAD Distinct
+	Autonumber(neighbourhood_cleansed & 'Brussels') as NeighbourhoodID, 
+    neighbourhood_cleansed as neighbourhood_name,
+    'Brussels' as city
+    
+  Resident Brussels_listings;
+  
+  
+  Concatenate(Dim_Neighbourhood)
+   LOAD Distinct
+	Autonumber(neighbourhood_cleansed & 'Ghent') as NeighbourhoodID, 
+    neighbourhood_cleansed as neighbourhood_name ,
+    'Ghent' as city
+    
+Resident Ghent_listings;
+Dim_Date:
+
+  LOAD Distinct
+
+    Autonumber("date") as DateID,
+    "date" as Date,
+    Year("date") as Year,
+    Month("date") as Month,
+    Day("date") as Day,
+    If(Month("date") >= 3 and Month("date") <= 5, 'Spring',
+    If(Month("date") >= 6 and Month("date") <= 8, 'Summer',
+    If(Month("date") >= 9 and Month("date") <= 11, 'Fall', 'Winter'))) as Season
+  Resident Antwerp_listings;
+  
+  Concatenate(Dim_Date)
+  LOAD Distinct
+
+    Autonumber("date") as DateID,
+    "date" as Date,
+    Year("date") as Year,
+    Month("date") as Month,
+    Day("date") as Day,
+    If(Month("date") >= 3 and Month("date") <= 5, 'Spring',
+    If(Month("date") >= 6 and Month("date") <= 8, 'Summer',
+    If(Month("date") >= 9 and Month("date") <= 11, 'Fall', 'Winter'))) as Season
+  Resident Brussels_listings;
+  
+  Concatenate(Dim_Date)
+  LOAD Distinct
+
+    Autonumber("date") as DateID,
+    "date" as Date,
+    Year("date") as Year,
+    Month("date") as Month,
+    Day("date") as Day,
+    If(Month("date") >= 3 and Month("date") <= 5, 'Spring',
+    If(Month("date") >= 6 and Month("date") <= 8, 'Summer',
+    If(Month("date") >= 9 and Month("date") <= 11, 'Fall', 'Winter'))) as Season
+  Resident Ghent_listings;
+  
+Dim_Host:
+LOAD Distinct
+    Autonumber(host_id) as HostID, 
+    host_name, 
+    host_is_superhost, 
+    host_listings_count, 
+    host_total_listings_count,
+    host_response_time as responsiveness 
+    
+Resident Antwerp_listings;
+
+Concatenate(Dim_Host)
+
+LOAD Distinct
+    Autonumber(host_id) as HostID, 
+    host_name, 
+    host_is_superhost, 
+    host_listings_count, 
+    host_total_listings_count,
+    host_response_time as responsiveness 
+    
+Resident Brussels_listings;
+
+Concatenate(Dim_Host)
+
+LOAD Distinct
+    Autonumber(host_id) as HostID, 
+    host_name, 
+    host_is_superhost, 
+    host_listings_count, 
+    host_total_listings_count,
+    host_response_time as responsiveness 
+    
+Resident Ghent_listings;
+
+Dim_Property_Details:
+LOAD Distinct
+    AutoNumber(listing_id) as PropertyID,
+    name, 
+    picture_url, 
+    property_type, 
+    room_type, 
+    accommodates, 
+    bathrooms_text, 
+    bedrooms, 
+    beds, 
+    amenities, 
+    latitude, 
+    longitude
+    Resident Antwerp_listings;
+    
+    
+    Concatenate(Dim_Property_Details)
+    LOAD Distinct
+    AutoNumber(listing_id) as PropertyID,
+    name, 
+    picture_url, 
+    property_type, 
+    room_type, 
+    accommodates, 
+    bathrooms_text, 
+    bedrooms, 
+    beds, 
+    amenities, 
+    latitude, 
+    longitude
+    Resident Brussels_listings;
+    
+    
+    Concatenate(Dim_Property_Details)
+    LOAD Distinct
+    AutoNumber(listing_id) as PropertyID,
+    name, 
+    picture_url, 
+    property_type, 
+    room_type, 
+    accommodates, 
+    bathrooms_text, 
+    bedrooms, 
+    beds, 
+    amenities, 
+    latitude, 
+    longitude
+    Resident Ghent_listings;
+    
+    
+  
+
+
+DROP TABLE Antwerp_listings;
+DROP TABLE Brussels_listings;
+DROP TABLE Ghent_listings;
+
